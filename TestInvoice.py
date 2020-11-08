@@ -1,4 +1,5 @@
 # Chris Donohue - 801030506
+import math
 
 import pytest
 from Invoice import Invoice
@@ -28,3 +29,15 @@ def test_CanCalculateTotalDiscount(invoice, products):
 def test_CanCalculateTotalPurePrice(invoice, products):
     invoice.totalPurePrice(products)
     assert invoice.totalPurePrice(products) == 69.38
+
+def test_CanAddProduct(invoice):
+       qnt = 5
+       price = 2
+       discount = 5
+       invoice.addProduct(qnt,price,discount)
+       assert invoice.items['qnt'] == 5
+       assert invoice.items['unit_price'] == 2
+       assert invoice.items['discount'] == 5
+
+def test_inputNumber(invoice):
+   assert invoice.inputNumber('Enter something')
